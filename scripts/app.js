@@ -11,6 +11,11 @@ new Vue({
             ]
         };
     },
+    methods: {
+        addCard(card) {
+            this.columns[1].cards.push({ ...card, createdAt: new Date(), lastEdited: new Date() });
+        }
+    },
     created() {
         const savedColumns = JSON.parse(localStorage.getItem('kanban-columns'));
         if (savedColumns) {

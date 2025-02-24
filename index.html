@@ -19,10 +19,12 @@
                 :title="column.title"
                 :cards="column.cards"
                 :index="index"
+                @add-card="addCard"
         ></column>
     </div>
 </div>
 <!-- Подключение скриптов -->
+<script src="scripts/newCardForm.js"></script>
 <script src="scripts/card.js"></script>
 <script src="scripts/column.js"></script>
 <script src="scripts/app.js"></script>
