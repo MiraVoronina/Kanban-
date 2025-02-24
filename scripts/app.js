@@ -31,6 +31,17 @@ new Vue({
             }
             const card = this.columns[fromIndex].cards.splice(cardIndex, 1)[0];
             this.columns[toIndex].cards.push(card);
+            if (toIndex === 4) {
+                const deadline = new Date(card.deadline);
+                const now = new Date();
+                if (deadline >= now) {
+                    card.status = "Выполнено в срок";
+                    card.color = "#e8f5e9"; // Нежно-зеленый цвет
+                } else {
+                    card.status = "Просрочено";
+                    card.color = "#ffebee"; // Нежно-розовый цвет
+                }
+            }
         }
     },
     created() {
