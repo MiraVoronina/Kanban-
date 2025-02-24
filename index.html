@@ -12,8 +12,18 @@
 </head>
 <body>
 <div id="app">
+    <div class="kanban-board">
+        <column
+                v-for="(column, index) in columns"
+                :key="column.title"
+                :title="column.title"
+                :cards="column.cards"
+                :index="index"
+        ></column>
+    </div>
 </div>
 <!-- Подключение скриптов -->
+<script src="scripts/column.js"></script>
 <script src="scripts/app.js"></script>
 </body>
 </html>
