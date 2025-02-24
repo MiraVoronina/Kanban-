@@ -9,6 +9,9 @@ Vue.component('column', {
             :card="card"
             :column-index="index"
             :card-index="cardIndex"
+            @edit="handleEditCard"
+            @delete="handleDeleteCard"
+            @move="handleMoveCard"
         ></card>
       </div>
     `,
@@ -16,6 +19,15 @@ Vue.component('column', {
     methods: {
         handleAddCard(card) {
             this.$emit('add-card', card);
+        },
+        handleEditCard(cardIndex, updatedCard) {
+            this.$emit('edit-card', this.index, cardIndex, updatedCard);
+        },
+        handleDeleteCard(cardIndex) {
+            this.$emit('delete-card', this.index, cardIndex);
+        },
+        handleMoveCard(cardIndex) {
+            this.$emit('move-card', this.index, cardIndex);
         }
     }
 });
