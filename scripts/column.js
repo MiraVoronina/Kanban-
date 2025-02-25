@@ -12,6 +12,7 @@ Vue.component('column', {
             @edit="handleEditCard"
             @delete="handleDeleteCard"
             @move="handleMoveCard"
+            @return-card="handleReturnCard"
         ></card>
       </div>
     `,
@@ -26,8 +27,11 @@ Vue.component('column', {
         handleDeleteCard(cardIndex) {
             this.$emit('delete-card', this.index, cardIndex);
         },
-        handleMoveCard(cardIndex) {
-            this.$emit('move-card', this.index, cardIndex);
+        handleMoveCard(cardIndex, toIndex) {
+            this.$emit('move-card', this.index, toIndex, cardIndex);
+        },
+        handleReturnCard(cardIndex, reason) {
+            this.$emit('return-card', this.index, cardIndex, reason);
         }
     }
 });

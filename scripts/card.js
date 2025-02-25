@@ -10,12 +10,13 @@ Vue.component('card', {
         <button class="edit" @click="editCard">Редактировать</button>
         <button class="delete" @click="deleteCard">Удалить</button>
         <button v-if="canMoveForward" class="move" @click="moveCard">Переместить</button>
+        <button v-if="columnIndex === 4" class="return" @click="returnCard">Возврат</button>
       </div>
     `,
     props: ['card', 'columnIndex', 'cardIndex'],
     computed: {
         canMoveForward() {
-            return (this.columnIndex < 4);
+            return (this.columnIndex < 4); // Разрешаем перемещение до пятой колонки
         }
     },
     methods: {
@@ -35,6 +36,12 @@ Vue.component('card', {
         },
         moveCard() {
             this.$emit('move', this.cardIndex);
+        },
+        returnCard() {
+            const reason = prompt("Введите причину возврата:");
+            if (reason) {
+                this.$emit('return-card', this.cardIndex, reason);
+            }
         }
     }
 });

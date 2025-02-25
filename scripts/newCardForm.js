@@ -7,6 +7,8 @@ Vue.component('new-card-form', {
             placeholder="Описание"
             required
             maxlength="200"
+            @input="autoResize"
+            ref="descriptionTextarea"
         ></textarea>
         <input type="date" v-model="deadline" required />
         <button type="submit">Добавить задачу</button>
@@ -26,6 +28,16 @@ Vue.component('new-card-form', {
                 this.title = "";
                 this.description = "";
                 this.deadline = "";
+                this.resetTextareaHeight(); // Сброс высоты textarea после отправки
+            }
+        },
+        autoResize() {
+            this.$refs.descriptionTextarea.style.height = "auto"; // Сбрасываем высоту
+            this.$refs.descriptionTextarea.style.height = `${this.$refs.descriptionTextarea.scrollHeight}px`; // Устанавливаем новую высоту
+        },
+        resetTextareaHeight() {
+            if (this.$refs.descriptionTextarea) {
+                this.$refs.descriptionTextarea.style.height = "24px"; // Возвращаем начальную высоту
             }
         }
     }
