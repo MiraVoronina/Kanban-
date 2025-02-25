@@ -47,3 +47,7 @@ body {
 button {
     margin-right: 8px;
 }
+.card.critical-deadline {
+    border-color: #ffeb3b; /* Ярко-желтый цвет границы */
+    background-color: #fffde7; /* Светло-желтый фон */
+}

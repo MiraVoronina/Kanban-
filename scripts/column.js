@@ -9,6 +9,7 @@ Vue.component('column', {
             :card="card"
             :column-index="index"
             :card-index="cardIndex"
+            :has-critical-deadlines-in-middle-columns="$parent.hasCriticalDeadlinesInMiddleColumns"
             @edit="handleEditCard"
             @delete="handleDeleteCard"
             @move="handleMoveCard"
